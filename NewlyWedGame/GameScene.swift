@@ -79,22 +79,48 @@ class GameScene: SKScene {
     // Video
     
     func addVideoButtons(videos: [QuestionVideo]) {
-        for index in 0..<videos.count {
-            let button = STButton(action: touchedVideoButton)
-            button.setArguments(["index": index, "video":videos[index]])
-            button.name = scrollArea.touchableNodeNames[0]
-            button.size = buttonSize
-            button.color = index % 2 == 0 ? SKColor.darkGrayColor() : SKColor.blackColor()
-            nodeOrganizer.addChild(button)
+        if videos.count > 0 {
+            for index in 0..<videos.count {
+                let button = STButton(action: touchedVideoButton)
+                button.setArguments(["index": index, "video":videos[index]])
+                button.name = scrollArea.touchableNodeNames[0]
+                button.size = buttonSize
+                button.color = index % 2 == 0 ? SKColor.darkGrayColor() : SKColor.blackColor()
+                nodeOrganizer.addChild(button)
+                
+                let label = SKLabelNode(fontNamed: "Avenir Black")
+                label.text = String(index + 1)
+                label.fontColor = SKColor.whiteColor()
+                label.fontSize = 100
+                label.zPosition = 1
+                label.verticalAlignmentMode = .Center
+                label.position = CGPointMake(button.size.width / 2, -button.size.height / 2)
+                button.addChild(label)
+            }
+        } else {
+            let textLines: [String] = [
+                "Instructions for adding videos:",
+                "• Add video files (with any video extension) to \"Documents/_newlyWedVideos\" folder",
+                "• Add a text line to \"Documents/_newlyWedConfig.txt\" for every video with information:",
+                "•    Video file name (video.mp4), pause time (10.4) and title/question (Who is faster?)",
+                "• Example: FirstQuestion.mp4 20 Who asked the other one out first?",
+                "• Run the application again and this text will be gone. Instead: VIDEOS! Good luck :)"
+            ]
             
-            let label = SKLabelNode(fontNamed: "Avenir Black")
-            label.text = String(index + 1)
-            label.fontColor = SKColor.whiteColor()
-            label.fontSize = 100
-            label.zPosition = 1
-            label.verticalAlignmentMode = .Center
-            label.position = CGPointMake(button.size.width / 2, -button.size.height / 2)
-            button.addChild(label)
+            for i in 0..<textLines.count {
+                let line: String = textLines[i]
+                
+                let label = SKLabelNode(fontNamed: "Avenir Medium")
+                label.fontSize = 40
+                label.fontColor = SKColor.blackColor()
+                label.horizontalAlignmentMode = .Left
+                label.position.y = -200 - CGFloat(i * 60)
+                label.position.x = -nodeOrganizer.size.width / 2 + 100
+                label.zPosition = 5
+                label.text = line
+                
+                nodeOrganizer.addUnorganizedChild(label)
+            }
         }
     }
     
