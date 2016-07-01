@@ -69,6 +69,8 @@ public class AppVideoNode: SKVideoNode
         // self.avPlayer = AVPlayer(URL: NSURL())
         self.avPlayer = nil
         
+        onVideoEndHandler = nil
+        
         self.removeAllChildren()
         self.removeAllActions()
         self.removeFromParent()

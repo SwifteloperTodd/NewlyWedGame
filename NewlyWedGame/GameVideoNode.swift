@@ -26,6 +26,7 @@ class GameVideoNode : AppVideoHolder {
     
     var continueScreen: STButton?
     var endAction: (Void -> Void)?
+    var onCloseButtonTouch: (Void -> Void)?
     
     var hasPaused: Bool = false
     var pauseTime: Double?
@@ -243,6 +244,7 @@ class GameVideoNode : AppVideoHolder {
     
     func touchCloseButton(info: [String : AnyObject]?) {
         self.close()
+        self.onCloseButtonTouch?()
     }
     
     func touchPlayPauseButton(info: [String : AnyObject]?) {
@@ -269,6 +271,11 @@ class GameVideoNode : AppVideoHolder {
         fillBar = nil
         playerDuration = nil
         currentTimeLabel = nil
+        playPauseButton = nil
+        continueScreen = nil
+        endAction = nil
+        onCloseButtonTouch = nil
+        pauseTime = nil
     }
     
     // Overrides

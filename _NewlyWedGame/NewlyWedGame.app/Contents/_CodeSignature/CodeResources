@@ -6,7 +6,7 @@
 	<dict>
 		<key>Resources/Assets.car</key>
 		<data>
-		Z8jveFneCOvIfC5C3G04ZVgrdaQ=
+		OmHNrvir+9Sd/5rsXV4r2qIUHeQ=
 		</data>
 		<key>Resources/Base.lproj/MainMenu.nib</key>
 		<dict>
@@ -17,9 +17,21 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>Resources/FireworkExplosion.sks</key>
+		<data>
+		1UVTQeByCvzXad/NwWlJZZ0aOw0=
+		</data>
+		<key>Resources/FireworkLaunch.sks</key>
+		<data>
+		lDrVWJcXo8dR9nyV4X0YPMu6PJQ=
+		</data>
+		<key>Resources/FireworkLight.sks</key>
+		<data>
+		kUJwrjK1OZWrK8cRPGaIriYTyYw=
+		</data>
 		<key>Resources/background.jpg</key>
 		<data>
-		3Hrs2DIUzZGwWQO29Zrzh0ZjvWs=
+		eHcwLK2ewNwI8yLOSjk/Jc895uc=
 		</data>
 		<key>Resources/button-highlight.png</key>
 		<data>
@@ -48,6 +60,10 @@
 		<key>Resources/rr.png</key>
 		<data>
 		Fm+r5JpoeH3ehzqWxK1mJK4DBGM=
+		</data>
+		<key>Resources/spark.png</key>
+		<data>
+		Oi1AKZlgrb1nO63etxu4jb7LPsw=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -200,11 +216,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Z8jveFneCOvIfC5C3G04ZVgrdaQ=
+			OmHNrvir+9Sd/5rsXV4r2qIUHeQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			fIpI0kGHxcEID+b2KyuuaqHYLCQhawRkCGUsazq4edw=
+			9N122efaFYD6j3tTCPbjlobUJYihc1pOk7Y10mSRGDo=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/MainMenu.nib</key>
@@ -220,15 +236,48 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>Resources/FireworkExplosion.sks</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			1UVTQeByCvzXad/NwWlJZZ0aOw0=
+			</data>
+			<key>hash2</key>
+			<data>
+			so963dpS5w+DEF0qrBsG9yi7r5juLRFOy6dVfSOkCsQ=
+			</data>
+		</dict>
+		<key>Resources/FireworkLaunch.sks</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			lDrVWJcXo8dR9nyV4X0YPMu6PJQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			E4BD3pxC/WZEPDAbhaBt5QRJxeq9xEin7bGEbd+RlRI=
+			</data>
+		</dict>
+		<key>Resources/FireworkLight.sks</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			kUJwrjK1OZWrK8cRPGaIriYTyYw=
+			</data>
+			<key>hash2</key>
+			<data>
+			Nvv+KGQ2g+sisdaGEhlMhvuX/9Blq7vHSxEn7JJcmmQ=
+			</data>
+		</dict>
 		<key>Resources/background.jpg</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			3Hrs2DIUzZGwWQO29Zrzh0ZjvWs=
+			eHcwLK2ewNwI8yLOSjk/Jc895uc=
 			</data>
 			<key>hash2</key>
 			<data>
-			RCn1Qwt9qNZnFMyfjuA0/cJKsa/pQksLD6szOoJB+p4=
+			s4j4mslFi784+oHRcMpYWUlvgaCXnm/x71qsLmdOphE=
 			</data>
 		</dict>
 		<key>Resources/button-highlight.png</key>
@@ -306,6 +355,17 @@
 			<key>hash2</key>
 			<data>
 			ezzlvDCmy109er2gDjnymr6Pyy7E1fAgZa4/Q9GHiks=
+			</data>
+		</dict>
+		<key>Resources/spark.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			Oi1AKZlgrb1nO63etxu4jb7LPsw=
+			</data>
+			<key>hash2</key>
+			<data>
+			ZvM484xf14bHLtCQbPOluymxcPHl8CuKkqlkQJp5KeE=
 			</data>
 		</dict>
 	</dict>

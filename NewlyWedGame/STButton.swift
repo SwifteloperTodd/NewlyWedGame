@@ -14,6 +14,9 @@ class STButton : SKSpriteNode {
     private var defaultTexture: SKTexture?
     private var activeTexture: SKTexture?
     
+    var overEffectAction: (Void -> Void)?
+    var undoOverEffectAction: (Void -> Void)?
+    
     var action: (([String : AnyObject]?) -> (Void))?
     private var arguments: [String : AnyObject]?
     
@@ -59,6 +62,11 @@ class STButton : SKSpriteNode {
     // EFFECTS
     
     func applyActiveState() {
+        if overEffectAction != nil {
+            overEffectAction!()
+            return
+        }
+        
         if activeTexture != nil {
             self.texture = activeTexture
         } else {
@@ -67,6 +75,11 @@ class STButton : SKSpriteNode {
     }
     
     func applyDefaultState() {
+        if undoOverEffectAction != nil {
+            undoOverEffectAction!()
+            return
+        }
+        
         if activeTexture != nil {
             self.texture = defaultTexture
         } else {

@@ -19,21 +19,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var videos: [QuestionVideo] = [QuestionVideo]()
     var scene: GameScene!
     
-    var exampleVideos: [[String : AnyObject]] = [
-        [
-            "title": "Which one of you asked the other one out?",
-            "pauseTime": 4
-        ],
-        [
-            "title": "Who is prettier?",
-            "pauseTime": 6.2
-        ],
-        [
-            "title": "Which one of you laughs harder?",
-            "pauseTime": 10
-        ]
-    ]
-    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         let sceneSize: CGSize = CGSizeMake(1920,1080)
         

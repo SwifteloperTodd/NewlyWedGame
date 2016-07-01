@@ -72,6 +72,7 @@ class AppVideoHolder : SKSpriteNode {
     
     func cleanUp() {
         video?.cleanUp()
+        video = nil
         self.removeAllActions()
         self.removeAllChildren()
         self.removeFromParent()

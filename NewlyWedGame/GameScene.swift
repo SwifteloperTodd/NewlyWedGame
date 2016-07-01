@@ -19,6 +19,8 @@ class GameScene: SKScene {
     var nextVideoButton: STButton?
     var lastVideoHighlight: SKSpriteNode!
     
+    let congratzScreen = STButton()
+    
     let rowCount: CGFloat = 7
     
     var buttonSize: CGSize = CGSizeZero
@@ -64,6 +66,15 @@ class GameScene: SKScene {
         lastVideoHighlight.zPosition = 5
         lastVideoHighlight.hidden = true
         nodeOrganizer.addUnorganizedChild(lastVideoHighlight)
+        
+        congratzScreen.color = SKColor.fromHexCode("000000", alpha: 0.8)
+        congratzScreen.zPosition = 5000
+        congratzScreen.action = dismissCongratzScreen
+        congratzScreen.overEffectAction = {}
+        congratzScreen.size = self.size
+        congratzScreen.position.y = self.size.height / 2
+        congratzScreen.hidden = true
+        self.addChild(congratzScreen)
     }
     
     func relocateVideoHighlight() {
@@ -101,9 +112,12 @@ class GameScene: SKScene {
             let textLines: [String] = [
                 "Instructions for adding videos:",
                 "• Add video files (with any video extension) to \"Documents/_newlyWedVideos\" folder",
+                "",
                 "• Add a text line to \"Documents/_newlyWedConfig.txt\" for every video with information:",
-                "•    Video file name (video.mp4), pause time (10.4) and title/question (Who is faster?)",
-                "• Example: FirstQuestion.mp4 20 Who asked the other one out first?",
+                "Video file name (video.mp4), pause time (10.4) and title/question (Who is faster?)",
+                "• Example:",
+                "FirstQuestion.mp4 20 Who asked the other one out first?",
+                "",
                 "• Run the application again and this text will be gone. Instead: VIDEOS! Good luck :)"
             ]
             
@@ -114,7 +128,7 @@ class GameScene: SKScene {
                 label.fontSize = 40
                 label.fontColor = SKColor.blackColor()
                 label.horizontalAlignmentMode = .Left
-                label.position.y = -200 - CGFloat(i * 60)
+                label.position.y = -150 - CGFloat(i * 60)
                 label.position.x = -nodeOrganizer.size.width / 2 + 100
                 label.zPosition = 5
                 label.text = line
@@ -142,12 +156,14 @@ class GameScene: SKScene {
         }
         
         videoNode?.cleanUp()
+        videoNode = nil
         
         let videoFilePath: String = SuttUtil.appDelegate().getVideosDirectoryPath() + "/\(video.videoName)"
         
         videoNode = GameVideoNode(videoFilePath: videoFilePath)
         videoNode!.pauseTime = video.pauseTime
         videoNode!.title = "\(currentVideoIndex + 1)) \(video.title ?? "")"
+        videoNode!.onCloseButtonTouch = hideNextVideoButton
         videoNode!.zPosition = 1000
         videoNode!.size = self.size
         videoNode!.position.y = self.size.height / 2
@@ -169,8 +185,7 @@ class GameScene: SKScene {
     }
     
     func touchNextVideoButton(info: [String : AnyObject]?) {
-        nextVideoButton?.alpha = 1
-        nextVideoButton?.runAction(SKAction.sequence([SKAction.fadeOutWithDuration(0.2),SKAction.hide()]))
+        hideNextVideoButton()
         
         let videos = SuttUtil.appDelegate().videos
         let newIndex = currentVideoIndex + 1
@@ -178,6 +193,113 @@ class GameScene: SKScene {
             showVideo(newIndex, video: videos[newIndex])
         } else {
             videoNode?.close()
+        }
+    }
+    
+    func hideNextVideoButton() {
+        nextVideoButton?.alpha = 1
+        nextVideoButton?.runAction(SKAction.sequence([SKAction.fadeOutWithDuration(0.2),SKAction.hide()]))
+        
+        if currentVideoIndex + 1 >= SuttUtil.appDelegate().videos.count {
+            showCongratulationsScreen()
+        }
+    }
+    
+    func showCongratulationsScreen() {
+        congratzScreen.alpha = 0
+        congratzScreen.hidden = false
+        congratzScreen.runAction(SKAction.sequence([SKAction.fadeInWithDuration(1),SKAction.runBlock(self.addFireworks)]))
+    }
+    
+    func dismissCongratzScreen(info: [String : AnyObject]?) {
+        congratzScreen.runAction(SKAction.sequence([SKAction.fadeOutWithDuration(0.2),SKAction.hide(),SKAction.runBlock({
+            self.removeAllActions()
+            self.congratzScreen.removeAllActions()
+            self.congratzScreen.removeAllChildren()
+        })]))
+    }
+    
+    func addFireworks() {
+        func addFireWorkWithXPosition(positionX: CGFloat) {
+            if let fireworkLight = SKEmitterNode(fileNamed: "FireworkLight") {
+                
+                fireworkLight.zPosition = 3
+                fireworkLight.position.y = -500
+                fireworkLight.position.x = positionX
+                
+                self.runAction(SKAction.sequence([
+                    SKAction.runBlock({
+                        self.congratzScreen.addChild(fireworkLight)
+                    }),
+                    SKAction.waitForDuration(2),
+                    SKAction.runBlock({
+                        fireworkLight.removeFromParent()
+                        
+                        if let fireworkLaunch = SKEmitterNode(fileNamed: "FireworkLaunch") {
+                            fireworkLaunch.zPosition = 2
+                            fireworkLaunch.position.y = -500
+                            fireworkLaunch.position.x = positionX
+                            self.congratzScreen.addChild(fireworkLaunch)
+                        }
+                    }),
+                    SKAction.waitForDuration(1),
+                    SKAction.runBlock({
+                        if let fireworkExplosion = SKEmitterNode(fileNamed: "FireworkExplosion") {
+                            fireworkExplosion.zPosition = 4
+                            fireworkExplosion.position.y = 100
+                            fireworkExplosion.position.x = positionX
+                            self.congratzScreen.addChild(fireworkExplosion)
+                        }
+                    })
+                ]))
+            }
+        }
+        
+        let wait = SKAction.waitForDuration(0.2)
+        self.runAction(SKAction.sequence([
+            SKAction.runBlock({
+                addFireWorkWithXPosition(-800)
+            }),wait,
+            SKAction.runBlock({
+                addFireWorkWithXPosition(-400)
+            }),wait,
+            SKAction.runBlock({
+                addFireWorkWithXPosition(0)
+            }),wait,
+            SKAction.runBlock({
+                addFireWorkWithXPosition(400)
+            }),wait,
+            SKAction.runBlock({
+                addFireWorkWithXPosition(800)
+            })
+        ]))
+        
+        self.runAction(SKAction.sequence([
+            SKAction.waitForDuration(7),
+            SKAction.runBlock({
+                let label = SKLabelNode(fontNamed: "Avenir Black")
+                label.zPosition = 10
+                label.text = "YOU DID IT."
+                label.fontSize = 150
+                label.fontColor = SKColor.whiteColor()
+                label.verticalAlignmentMode = .Center
+                label.alpha = 0
+                self.congratzScreen.addChild(label)
+                label.runAction(SKAction.fadeInWithDuration(1))
+            }),
+            SKAction.waitForDuration(1),
+            SKAction.runBlock(addRandomExplosionsForever)
+        ]))
+    }
+    
+    func addRandomExplosionsForever() {
+        if let fireworkExplosion = SKEmitterNode(fileNamed: "FireworkExplosion") {
+            fireworkExplosion.zPosition = 4
+            fireworkExplosion.position.y = -self.size.height / 2 + CGFloat(arc4random() % UInt32(self.size.height))
+            fireworkExplosion.position.x = -self.size.width / 2 + CGFloat(arc4random() % UInt32(self.size.width))
+            self.congratzScreen.addChild(fireworkExplosion)
+            
+            self.runAction(SKAction.sequence([SKAction.waitForDuration(1),SKAction.runBlock(self.addRandomExplosionsForever)]))
         }
     }
     

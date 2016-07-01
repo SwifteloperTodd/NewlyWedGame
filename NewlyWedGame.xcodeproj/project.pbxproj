@@ -30,6 +30,10 @@
 		2CD4E7D71D23241F0071D99A /* QuestionVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4E7D61D23241F0071D99A /* QuestionVideo.swift */; };
 		2CD4E7D91D232A150071D99A /* GameVideoNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4E7D81D232A150071D99A /* GameVideoNode.swift */; };
 		2CD4E7DB1D2334700071D99A /* ToggleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD4E7DA1D2334700071D99A /* ToggleNode.swift */; };
+		2CD9270D1D26E89400DED2DA /* FireworkExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2CD9270B1D26E89400DED2DA /* FireworkExplosion.sks */; };
+		2CD9270E1D26E89400DED2DA /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CD9270C1D26E89400DED2DA /* spark.png */; };
+		2CD927101D26EA0500DED2DA /* FireworkLaunch.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2CD9270F1D26EA0500DED2DA /* FireworkLaunch.sks */; };
+		2CD927121D26EB1C00DED2DA /* FireworkLight.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2CD927111D26EB1C00DED2DA /* FireworkLight.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +83,10 @@
 		2CD4E7D61D23241F0071D99A /* QuestionVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionVideo.swift; sourceTree = "<group>"; };
 		2CD4E7D81D232A150071D99A /* GameVideoNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameVideoNode.swift; sourceTree = "<group>"; };
 		2CD4E7DA1D2334700071D99A /* ToggleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToggleNode.swift; sourceTree = "<group>"; };
+		2CD9270B1D26E89400DED2DA /* FireworkExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireworkExplosion.sks; sourceTree = "<group>"; };
+		2CD9270C1D26E89400DED2DA /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		2CD9270F1D26EA0500DED2DA /* FireworkLaunch.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireworkLaunch.sks; sourceTree = "<group>"; };
+		2CD927111D26EB1C00DED2DA /* FireworkLight.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FireworkLight.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +186,10 @@
 				2CD4E7B61D231DB90071D99A /* SuttUtils */,
 				2CD4E7AB1D2311810071D99A /* Classes */,
 				2CD4E7AA1D2311780071D99A /* Other */,
+				2CD9270B1D26E89400DED2DA /* FireworkExplosion.sks */,
+				2CD9270F1D26EA0500DED2DA /* FireworkLaunch.sks */,
+				2CD927111D26EB1C00DED2DA /* FireworkLight.sks */,
+				2CD9270C1D26E89400DED2DA /* spark.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -325,6 +337,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CD9270D1D26E89400DED2DA /* FireworkExplosion.sks in Resources */,
+				2CD9270E1D26E89400DED2DA /* spark.png in Resources */,
+				2CD927101D26EA0500DED2DA /* FireworkLaunch.sks in Resources */,
+				2CD927121D26EB1C00DED2DA /* FireworkLight.sks in Resources */,
 				2C1AC3251D237B4E004A2AB7 /* close.png in Resources */,
 				2C0F7C841D2391B3005AC346 /* background.jpg in Resources */,
 				2C0F7C821D238FEF005AC346 /* button-highlight.png in Resources */,
